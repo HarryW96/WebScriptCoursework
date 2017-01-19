@@ -1,0 +1,23 @@
+{
+  "name": "webscriptcoursework",
+  "version": "1.0.0",
+  "description": "Year 2 Web Script Programming Unit Coursework",
+  "main": "index.js",
+  "dependencies": {
+    "gridstack": "^0.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarryW96/WebScriptCoursework.git"
+  },
+  "author": "Harry Westbrook UP785080",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HarryW96/WebScriptCoursework/issues"
+  },
+  "homepage": "https://github.com/HarryW96/WebScriptCoursework#readme"
+}
