@@ -3,15 +3,18 @@
   background-color: #ffffff;
 }
 
-.header{
-  height: 6rem;
-  width: 100%;
-  background-color: #ffffff;
+.fa{
+  color: #ba1021;
+  margin-top: 1rem;
+  margin-left: 2rem;
 }
 
-.header h1{
+.fa:hover{
+  color:#8c0b18;
+}
+
+h1{
   text-align: center;
-  padding-top: 1rem;
   font-family: sans-serif;
   color: #ba1021;
   font-size: 4rem;
