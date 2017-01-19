@@ -4,6 +4,7 @@
   "description": "Year 2 Web Script Programming Unit Coursework",
   "main": "index.js",
   "dependencies": {
+    "express": "^4.14.0",
     "gridstack": "^0.2.6"
   },
   "devDependencies": {},
