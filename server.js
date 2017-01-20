@@ -1,9 +1,10 @@
-var express = require('express')
-var app = express()
-var path = require('path');
+var welcomebutton = document.getElementById('welcome-button');
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
-});
+welcomebutton.addEventListener('click', changeUsername;
 
-app.listen(8080);
+function changeUsername(){
+  var nameValue = document.getElementById('nameinput').value;
+  var greeting = document.getElementsByClassName('greeting');
+
+  greeting.innerHTML = "Welcome " + nameValue;
+}

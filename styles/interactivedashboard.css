@@ -1,6 +1,36 @@
+/*General Styling*/
 *{
   margin: 0;
   background-color: #ffffff;
+  color: #ba1021;
+  font-family: sans-serif;
+}
+
+.button-wrap{
+  text-align: center;
+}
+.btn {
+	background-color:#ba1021;
+	display:inline-block;
+  border-radius: 8px;
+	color:#ffffff;
+	font-size:17px;
+	padding:14px 29px;
+	text-decoration:none;
+}
+.btn:hover {
+	background-color:#8c0b18;
+}
+
+.btn:active {
+	position:relative;
+	top:1px;
+}
+
+/*index.html styling*/
+#panel-example{
+  background-color: grey;
+  height: 100%;
 }
 
 .fa{
@@ -13,34 +43,31 @@
   color:#8c0b18;
 }
 
-h1{
+.top-bar h1{
   text-align: center;
-  font-family: sans-serif;
-  color: #ba1021;
   font-size: 4rem;
 }
 
-.button{
+/*welcome.html styling*/
+#greeting{
+  text-align: center;
+  font-size: 3rem;
+}
+
+.username{
   text-align: center;
 }
 
-.btn {
-	background-color:#ba1021;
-	-moz-border-radius:28px;
-	-webkit-border-radius:28px;
-	border-radius:28px;
-	border:1px solid #ba1021;
-	display:inline-block;
-	color:#ffffff;
-	font-family: sans-serif;;
-	font-size:17px;
-	padding:16px 31px;
-	text-decoration:none;
-}
-.btn:hover {
-	background-color:#8c0b18;
-}
-.btn:active {
-	position:relative;
-	top:1px;
+@media (max-device-width: 1600px) {
+  #greeting{
+    padding-top: 9.5rem;
+  }
+  .username{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .username input{
+    height: 2rem;
+    width: 23rem;
+  }
 }

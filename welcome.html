@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to your Dashboard</title>
+    <link rel="stylesheet" href="styles/interactivedashboard.css">
+  </head>
+  <body>
+
+    <!--Greeting will change depending on time of day-->
+    <h1 id="greeting">Generic User Greeting</h1>
+
+    <!--Once user enters name 'user' will fade and display name, then load into dashboard-->
+    <form class="username">
+      <input type="text" placeholder="Name" id="nameinput">
+    </form>
+    <div class="button-wrap">
+      <button type="button" name="button" class="btn" id="welcome-button">Go!</button>
+    </div>
+
+    <script type="text/javascript" src='server.js'></script>
+  </body>
+</html>
