@@ -6,6 +6,10 @@
   font-family: sans-serif;
 }
 
+html{
+  height: 100%;
+}
+
 .button-wrap{
   text-align: center;
 }
@@ -28,9 +32,17 @@
 }
 
 /*index.html styling*/
+body{
+  height: 100%;
+}
+
 #panel-example{
   background-color: grey;
   height: 100%;
+}
+
+#panel-example ul, li{
+  background-color: grey;
 }
 
 .fa{
