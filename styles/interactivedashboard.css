@@ -1,85 +1,164 @@
 /*General Styling*/
-*{
-  margin: 0;
-  background-color: #ffffff;
-  color: #ba1021;
-  font-family: sans-serif;
+
+* {
+    margin: 0;
+    color: #ba1021;
+    font-family: sans-serif;
 }
 
-html{
-  height: 100%;
+html {
+    height: 100%;
 }
 
-.button-wrap{
-  text-align: center;
+.button-wrap {
+    text-align: center;
 }
+
 .btn {
-	background-color:#ba1021;
-	display:inline-block;
-  border-radius: 8px;
-	color:#ffffff;
-	font-size:17px;
-	padding:14px 29px;
-	text-decoration:none;
+    background-color: #ba1021;
+    display: inline-block;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 17px;
+    padding: 14px 29px;
+    text-decoration: none;
 }
+
 .btn:hover {
-	background-color:#8c0b18;
+    background-color: #8c0b18;
 }
 
 .btn:active {
-	position:relative;
-	top:1px;
+    position: relative;
+    top: 1px;
 }
+
 
 /*index.html styling*/
-body{
-  height: 100%;
+
+body {
+    min-height: 100%;
 }
 
-#panel-example{
-  background-color: grey;
-  height: 100%;
+#panel-example {
+    background-color: grey;
+    height: 100%;
 }
 
-#panel-example ul, li{
-  background-color: grey;
+#panel-example ul, li {
+    background-color: grey;
 }
 
-.fa{
-  color: #ba1021;
-  margin-top: 1rem;
-  margin-left: 2rem;
+.fa {
+    color: #ba1021;
+    margin-top: 1rem;
+    margin-left: 2rem;
 }
 
-.fa:hover{
-  color:#8c0b18;
+.fa:hover {
+    color: #8c0b18;
 }
 
-.top-bar h1{
+.top-bar h1 {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.column-wrap {
+    min-height: 100%;
+}
+
+.first-column {
+    width: 33%;
+    height: 100%;
+    float: left;
+    background-color: red;
+}
+
+.second-column {
+    width: 34%;
+    height: 100%;
+    float: left;
+    background-color: yellow;
+}
+
+.third-column {
+    width: 33%;
+    height: 100%;
+    float: right;
+    background-color: green;
+}
+
+/*Clock styling*/
+#clock-widget{
   text-align: center;
   font-size: 4rem;
+  color: black;
+  height: 6rem;
+  background: lightblue;
 }
+
+/*To do list styling*/
+#to-do-widget{
+  background-color: lightgreen;
+  padding-top: 10px;
+}
+
+#input-wrap{
+  padding-left: 10px;
+}
+
+#todos{
+  background-color: lightgreen;
+}
+
+#todos ul{
+  background-color: lightgreen;
+  list-style-type: none;
+  margin: 0;
+  padding-left: 10px;
+}
+
+#todos li{
+  background-color: lightgreen;
+}
+
+.remove{
+  margin-left: 10px;
+  background-color:#de382c;
+	display:inline-block;
+	color:#ffffff;
+	font-size:10px;
+	font-weight:bold;
+	padding:3px 3px;
+}
+
+.remove:hover{
+  background-color:#ff382e;
+}
+
 
 /*welcome.html styling*/
-#greeting{
-  text-align: center;
-  font-size: 3rem;
+
+#greeting {
+    text-align: center;
+    font-size: 3rem;
 }
 
-.username{
-  text-align: center;
+.username {
+    text-align: center;
 }
 
 @media (max-device-width: 1600px) {
-  #greeting{
-    padding-top: 9.5rem;
-  }
-  .username{
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-  .username input{
-    height: 2rem;
-    width: 23rem;
-  }
+    #greeting {
+        padding-top: 9.5rem;
+    }
+    .username {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    .username input {
+        height: 2rem;
+        width: 23rem;
+    }
 }
