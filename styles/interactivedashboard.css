@@ -72,21 +72,18 @@ body {
     width: 33%;
     height: 100%;
     float: left;
-    background-color: red;
 }
 
 .second-column {
     width: 34%;
     height: 100%;
     float: left;
-    background-color: yellow;
 }
 
 .third-column {
     width: 33%;
     height: 100%;
     float: right;
-    background-color: green;
 }
 
 /*Clock styling*/
@@ -161,4 +158,13 @@ body {
         height: 2rem;
         width: 23rem;
     }
+}
+
+.img-carousel{
+  background-color: none;
+}
+
+.carousel-img{
+ height: 30rem;
+ width: 100%;
 }
