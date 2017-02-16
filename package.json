@@ -5,12 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.14.0",
-    "gridstack": "^0.2.6",
-<<<<<<< HEAD
     "weather-js": "^1.0.2"
-=======
     "user-stream": "0.0.8"
->>>>>>> origin/master
+
   },
   "devDependencies": {},
   "scripts": {

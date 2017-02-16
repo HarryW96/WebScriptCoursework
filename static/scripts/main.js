@@ -74,12 +74,10 @@ function show() {
     };
 }
 
-<<<<<<< HEAD:static/scripts/main.js
-startTime();
-=======
+
 
 var slideIndex = 0;
-carousel();
+
 
 function carousel() {
     var i;
@@ -92,4 +90,6 @@ function carousel() {
     x[slideIndex-1].style.display = "block";
     setTimeout(carousel, 8000); // Change image every 10 seconds
 }
->>>>>>> origin/master:scripts/main.js
+
+startTime();
+carousel();
