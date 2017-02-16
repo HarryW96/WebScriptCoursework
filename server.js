@@ -1,10 +1,21 @@
-var welcomebutton = document.getElementById('welcome-button');
+var express = require('express')
+var app = express()
+var weather = require('weather-js')
 
-welcomebutton.addEventListener('click', changeUsername);
+app.use(express.static('static'))
 
-function changeUsername() {
-    var nameValue = document.getElementById('nameinput').value;
-    var greeting = document.getElementById('greeting');
 
-    greeting.innerHTML = "Welcome " + nameValue;
-}
+weather.find({
+    search: 'Portsmouth, UK',
+    degreeType: 'C'
+},
+
+function(err, result) {
+    if (err) console.log(err);
+
+    console.log(JSON.stringify(result, null, 1));
+});
+
+app.listen(8000, function() {
+    console.log('Example app listening on port 8000!')
+})

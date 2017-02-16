@@ -15,24 +15,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.0/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
-    <script src="node_modules/gridstack/dist/gridstack.js"></script>
-    <script type="text/javascript" src="node_modules/scotch-panels-master/dist/scotchPanels.js"></script>
+    <script type="text/javascript" src="scotch-panels-master/dist/scotchPanels.js"></script>
 </head>
 
-<style type="text/css">
-    .grid-stack {
-        background: #ffffff;
-    }
-
-    .grid-stack-item-content {
-        color: #808080;
-        text-align: center;
-        background-color: #ba1021;
-    }
-</style>
-</head>
-
-<body onload="startTime()">
+<body>
 
     <div class="top-bar">
         <a href="#" class="toggle-panel"><i class="fa fa-bars fa-3x" aria-hidden="true"></i></a>
@@ -76,6 +62,10 @@
 
         <div class="third-column">
             <p>right stuff</p>
+
+            <div id="weather-in-here">
+
+            </div>
         </div>
     </div>
 
