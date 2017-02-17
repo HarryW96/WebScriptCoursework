@@ -16,12 +16,14 @@ function startTime() {
     m = checkTime(m);
     s = checkTime(s);
     document.getElementById('clock-widget').innerHTML =
-    h + ":" + m + ":" + s;
+        h + ":" + m;
     var t = setTimeout(startTime, 500);
 }
 
 function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    if (i < 10) {
+        i = "0" + i
+    }; // add zero in front of numbers < 10
     return i;
 }
 
@@ -61,35 +63,38 @@ function show() {
     var todos = get_todos();
 
     var html = '<ul>';
-    for(var i=0; i<todos.length; i++) {
-        html += '<li>' + todos[i] + '<button class="remove" id="' + i  + '">x</button></li>';
+    for (var i = 0; i < todos.length; i++) {
+        html += '<li>' + todos[i] + '<button class="remove" id="' + i + '">x</button></li>';
     };
     html += '</ul>';
 
     document.getElementById('todos').innerHTML = html;
 
     var buttons = document.getElementsByClassName('remove');
-    for (var i=0; i < buttons.length; i++) {
+    for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', remove);
     };
 }
 
+document.getElementById('add').addEventListener('click', add);
 
 
 var slideIndex = 0;
-
 
 function carousel() {
     var i;
     var x = document.getElementsByClassName("carousel-img");
     for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
+        x[i].style.display = "none";
     }
     slideIndex++;
-    if (slideIndex > x.length) {slideIndex = 1}
-    x[slideIndex-1].style.display = "block";
+    if (slideIndex > x.length) {
+        slideIndex = 1
+    }
+    x[slideIndex - 1].style.display = "block";
     setTimeout(carousel, 8000); // Change image every 10 seconds
 }
 
 startTime();
 carousel();
+show();

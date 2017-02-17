@@ -13,9 +13,9 @@ weather.find({
 function(err, result) {
     if (err) console.log(err);
 
-    console.log(JSON.stringify(result, null, 1));
+    console.log(JSON.stringify(result, null, 2));
 });
 
 app.listen(8000, function() {
-    console.log('Example app listening on port 8000!')
+    console.log('Magic happening on port 8000!')
 })
