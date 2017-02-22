@@ -15,8 +15,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.0/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
-    <script type="text/javascript" src="scotch-panels-master/dist/scotchPanels.js"></script>
+    <script type="text/javascript" src="/scripts/scotch-panels-master/dist/scotchPanels.js"></script>
     <script type="text/javascript" src="node_modules/user-stream/index.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 
 </head>
 
@@ -24,7 +26,6 @@
 
     <div class="top-bar">
         <a href="#" class="toggle-panel"><i class="fa fa-bars fa-3x" aria-hidden="true"></i></a>
-        <h1>Dashboard</h1>
     </div>
 
     <div id="panel-example">
@@ -43,7 +44,13 @@
         <div class="first-column">
             <p>Left stuff</p>
 
-            <div id="clock-widget"></div>
+            <div id="to-do-widget">
+                <div id="input-wrap">
+                    <input id="task">
+                    <button id="add">Add</button>
+                </div>
+                <div id="todos"></div>
+            </div>
 
             <div class="image-carousel">
                 <img class="carousel-img" src="img/inspo1.jpg" alt="">
@@ -51,30 +58,27 @@
                 <img class="carousel-img" src="img/inspo3.jpg" alt="">
                 <img class="carousel-img" src="img/inspo4.jpg" alt="">
             </div>
+
         </div>
 
         <div class="second-column">
             <p>middle stuff</p>
 
-            <div id="to-do-widget">
-                <div id="input-wrap">
-                    <input id="task">
-                    <button id="add">Add</button>
-                </div>
-
-                <div id="todos"></div>
-            </div>
+            <div id="clock-widget"></div>
 
             <div id="weather"></div>
         </div>
 
         <div class="third-column">
             <p>right stuff</p>
-            <a class="twitter-timeline" href="https://twitter.com/BBCNews">Tweets by BBCNews</a>
-            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+            <div class="twitter-feed">
+                <a class="twitter-timeline" href="https://twitter.com/TwitterDev/timelines/539487832448843776" data-height="700">National Park Tweets - Curated tweets by TwitterDev</a>
+            </div>
         </div>
     </div>
 
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script type="text/javascript" src="scripts/main.js"></script>
 </body>
 

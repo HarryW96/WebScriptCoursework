@@ -16,7 +16,7 @@ function startTime() {
     m = checkTime(m);
     s = checkTime(s);
     document.getElementById('clock-widget').innerHTML =
-        h + ":" + m;
+        h + ":" + m + " GMT";
     var t = setTimeout(startTime, 500);
 }
 
@@ -94,6 +94,29 @@ function carousel() {
     x[slideIndex - 1].style.display = "block";
     setTimeout(carousel, 8000); // Change image every 10 seconds
 }
+
+$(document).ready(function() {
+  $.simpleWeather({
+    woeid: '2357536', //2357536
+    location: 'Portsmouth, UK',
+    unit: 'c',
+    success: function(weather) {
+      html = '<h2>'+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+      html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
+      html += '<li class="currently">'+weather.currently+'</li>';
+      html += '<li>'+weather.alt.temp+'&deg;F</li></ul>';
+
+      for(var i=0;i<weather.forecast.length - 5;i++) {
+        html += '<p>'+weather.forecast[i].day+': '+weather.forecast[i].high+'&deg' + weather.units.temp +'</p>';
+      }
+
+      $("#weather").html(html);
+    },
+    error: function(error) {
+      $("#weather").html('<p>'+error+'</p>');
+    }
+  });
+});
 
 startTime();
 carousel();
