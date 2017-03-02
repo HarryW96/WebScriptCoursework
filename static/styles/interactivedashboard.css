@@ -88,14 +88,20 @@ body {
     float: right;
 }
 
+/*Date Styling*/
+#date {
+    text-align: center;
+    font-size: 2.5rem;
+}
 
 /*Clock styling*/
 
 #clock-widget {
+    padding-top: 1rem;
     text-align: center;
-    font-size: 4rem;
+    font-size: 2.5rem;
     color: white;
-    height: 6rem;
+    height: 5rem;
 }
 
 

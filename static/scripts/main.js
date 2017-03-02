@@ -8,6 +8,17 @@ $('#panel-example').scotchPanel({
     enableEscapeKey: true // Clicking Esc will close the panel
 });
 
+function getDate() {
+  var today = new Date();
+  var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var date = today.getDate();
+  var year = today.getFullYear();
+
+  document.getElementById('date').innerHTML =
+      days[today.getDay()] + " " + date + " of " + months[today.getMonth()] + " " + year;
+}
+
 function startTime() {
     var today = new Date();
     var h = today.getHours();
@@ -118,6 +129,7 @@ $(document).ready(function() {
   });
 });
 
+getDate();
 startTime();
 carousel();
 show();
