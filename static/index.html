@@ -14,10 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.0/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
     <script type="text/javascript" src="/scripts/scotch-panels-master/dist/scotchPanels.js"></script>
-    <script type="text/javascript" src="node_modules/user-stream/index.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 
 </head>
@@ -31,6 +28,16 @@
     <div id="panel-example">
         <ul>
         </ul>
+    
+    </div>
+
+    <div class="carousel-wrap">
+        <div class="image-carousel">
+            <img class="carousel-img" src="img/inspo1.jpg" alt="">
+            <img class="carousel-img" src="img/inspo2.jpg" alt="">
+            <img class="carousel-img" src="img/inspo3.jpg" alt="">
+            <img class="carousel-img" src="img/inspo4.jpg" alt="">
+        </div>
     </div>
 
     <div class="column-wrap">
@@ -43,36 +50,6 @@
                     <button id="add">Add</button>
                 </div>
                 <div id="todos"></div>
-            </div>
-
-            <div class="image-carousel">
-                <img class="carousel-img" src="img/inspo1.jpg" alt="">
-                <img class="carousel-img" src="img/inspo2.jpg" alt="">
-                <img class="carousel-img" src="img/inspo3.jpg" alt="">
-                <img class="carousel-img" src="img/inspo4.jpg" alt="">
-            </div>
-
-        </div>
-
-        <div class="second-column">
-
-            <div id="date"></div>
-
-            <div id="clock-widget"></div>
-
-            <ul id='weathercurrent'>
-                <li id='location'></li>
-                <li id="weather"></li>
-                <li id="temp"></li>
-                <li id="wind"></li>
-            </ul>
-            
-        </div>
-
-        <div class="third-column">
-
-            <div class="twitter-feed">
-                <a class="twitter-timeline" href="https://twitter.com/TwitterDev/timelines/539487832448843776" data-height="450">National Park Tweets</a>
             </div>
 
             <div class="news">
@@ -92,6 +69,36 @@
                     <p id="desc3"></p>
                     <p id="url3"></p>
                 </div>
+            </div>
+            
+        </div>
+
+        <div class="second-column">
+
+            <div id="date"></div>
+
+            <div id="clock-widget"></div>
+
+            <ul id='weathercurrent'>
+                <h3>Today's Weather</h3>
+                <li id='location'></li>
+                <li id="weather"></li>
+                <li id="temp"></li>
+                <li id="wind"></li>
+            </ul>
+            
+             <ul id='weathertomorrow'>
+                <h3>Tomorrow's Weather</h3>
+                <li id="weathertmrrw"></li>
+                <li id="temptmrrw"></li>
+                <li id="windtmrrw"></li>
+            </ul>
+        </div>
+
+        <div class="third-column">
+
+            <div class="twitter-feed">
+                <a class="twitter-timeline" href="https://twitter.com/TwitterDev/timelines/539487832448843776" data-height="450">National Park Tweets</a>
             </div>
         </div>
     </div>

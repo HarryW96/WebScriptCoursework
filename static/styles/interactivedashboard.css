@@ -156,13 +156,19 @@ body {
 
 /*Image Carousel Styling*/
 
+.carousel-wrap{
+    text-align: center;
+}
+
 .carousel-img {
-    height: 35rem;
-    width: 100%;
+    text-align: center;
+    height: 100vh;
+    width: 100vh;
 }
 
 .image-carousel {
     padding-top: 1rem;
+    width: 100%;
 }
 
 
@@ -171,5 +177,36 @@ body {
 #weathercurrent{
     list-style-type: none;
     text-align: center;
-    padding: 0;
+    padding-left: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#weathertomorrow{
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+/* News styling */
+
+.news{
+    padding-left: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#story1{
+    padding-bottom: 1rem;
+}
+
+#story2{
+    padding-bottom: 1rem;
+}
+
+#story3{
+    padding-bottom: 1rem;
 }

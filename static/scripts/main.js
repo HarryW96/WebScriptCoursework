@@ -1,5 +1,3 @@
-var xhr = new XMLHttpRequest();
-
 $('#panel-example').scotchPanel({
     containerSelector: 'body', // As a jQuery Selector
     direction: 'left', // Make it toggle in from the left
@@ -19,28 +17,37 @@ var success = function (data) {
 };
 
 function getWeather(){
+    var xhr = new XMLHttpRequest();
     var weatherTarget = document.getElementById("weathercurrent");
     var weatherLocation = document.getElementById("location");
     var weatherType = document.getElementById("weather");
     var weatherTemp = document.getElementById("temp");
     var weatherWind = document.getElementById("wind");
 
-    xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?id=2639996&units=metric&APPID=85f6c954f91e2a8c096daf99ee63b1fc");
+    var tomorrowType = document.getElementById("weathertmrrw");
+    var tomorrowTemp = document.getElementById("temptmrrw");
+    var tomorrowWind = document.getElementById("windtmrrw");
+
+    xhr.open("GET", "http://api.openweathermap.org/data/2.5/forecast?id=2639996&units=metric&APPID=85f6c954f91e2a8c096daf99ee63b1fc");
+
     xhr.onreadystatechange = function(){
         if(xhr.readyState == XMLHttpRequest.DONE){
-            console.log("Ready!");
             if(xhr.status == 200){
                 var weatherJson = xhr.responseText;
                 var weatherData = JSON.parse(xhr.responseText);
                 
                 console.log("Ready to update weather!");
 
-                weatherLocation.innerHTML = "Location: " + weatherData.name;
-                weatherType.innerHTML = "Weather: " + weatherData.weather[0].main; 
-                weatherTemp.innerHTML =  "Temperature: " + weatherData.main.temp + "°C";
-                weatherWind.innerHTML = "Wind speed: " + weatherData.wind.speed + "m/s";
- 
-
+                //Set today's weather
+                weatherLocation.innerHTML = "Location: " + weatherData.city.name;
+                weatherType.innerHTML = "Weather: " + weatherData.list[0].weather[0].main; 
+                weatherTemp.innerHTML =  "Temperature: " + weatherData.list[0].main.temp + "°C";
+                weatherWind.innerHTML = "Wind speed: " + weatherData.list[0].wind.speed + "m/s";
+                
+                //Set tomorrow's weather
+                tomorrowType.innerHTML = "Weather: " + weatherData.list[1].weather[0].main; 
+                tomorrowTemp.innerHTML =  "Temperature: " + weatherData.list[1].main.temp + "°C";
+                tomorrowWind.innerHTML = "Wind speed: " + weatherData.list[1].wind.speed + "m/s";
             }
             else if(xhr.status == 404){
                 console.log("It's really not working");
@@ -51,6 +58,7 @@ function getWeather(){
 }
 
 function getNews(){
+    var xhr = new XMLHttpRequest();
     var title1 = document.getElementById("title1");
     var title2 = document.getElementById("title2");
     var title3 = document.getElementById("title3");
@@ -62,21 +70,52 @@ function getNews(){
     var url3 = document.getElementById("url3");
 
     xhr.open("GET", "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=513e603a4336419ca1bd9ee2b6738dd5");
-    xhr.onreadystatechange == function(){
+    xhr.onreadystatechange = function(){
         if(xhr.readyState == XMLHttpRequest.DONE){
-            console.log("Ready!");
             if(xhr.status == 200){
-                console.log("LETS DO THIS SHIT BOIZZZ!");
+                var newsJson = xhr.responseText;
+                var newsData = JSON.parse(xhr.responseText);
+                
+                console.log("Ready to update news!");
+                title1.innerHTML = newsData.articles[0].title;
+                title2.innerHTML = newsData.articles[1].title;
+                title3.innerHTML = newsData.articles[2].title;
+                desc1.innerHTML = newsData.articles[0].description;
+                desc2.innerHTML = newsData.articles[1].description;
+                desc2.innerHTML = newsData.articles[2].description;
+                url1.innerHTML = newsData.articles[0].url;
+                url2.innerHTML = newsData.articles[1].url;
+                url3.innerHTML = newsData.articles[2].url;
 
             }
             else if(xhr.status == 404){
-                console.log("Again, it's really not working.");
+                console.log("It's really not working");
             }
         }
     }
     xhr.send(null);
 }
 
+//Get looked at tomorrow
+function showDashboardOnly(){
+  var carousel = document.getElementsByClassName("carousel-wrap");
+  var dashboard = document.getElementsByClassName("column-wrap");
+
+  dashboard.style.display = "block";
+  carousel.style.display = "none";
+
+  window.setTimeout(showSlideshowOnly(), 5000);
+}
+
+function showSlideshowOnly(){
+  var carousel = document.getElementsByClassName("carousel-wrap");
+  var dashboard = document.getElementsByClassName("column-wrap");
+
+  dashboard.style.display = "none";
+  carousel.style.display = "block";
+
+  window.setTimeout(showDashboardOnly(), 5000);
+}
 
 function getDate() {
     var today = new Date();
@@ -172,9 +211,10 @@ function carousel() {
     if (slideIndex > x.length) {
         slideIndex = 1
     }
-    x[slideIndex - 1].style.display = "block";
+    x[slideIndex - 1].style.display = "inline";
     setTimeout(carousel, 8000); // Change image every 10 seconds
 }
+
 
 getDate();
 startTime();
@@ -182,3 +222,4 @@ carousel();
 show();
 getNews();
 getWeather();
+showDashboardOnly();
