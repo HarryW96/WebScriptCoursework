@@ -9,14 +9,14 @@ $('#panel-example').scotchPanel({
 });
 
 function getDate() {
-  var today = new Date();
-  var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  var date = today.getDate();
-  var year = today.getFullYear();
+    var today = new Date();
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var date = today.getDate();
+    var year = today.getFullYear();
 
-  document.getElementById('date').innerHTML =
-      days[today.getDay()] + " " + date + " of " + months[today.getMonth()] + " " + year;
+    document.getElementById('date').innerHTML =
+        days[today.getDay()] + " " + date + " of " + months[today.getMonth()] + " " + year;
 }
 
 function startTime() {
@@ -107,26 +107,26 @@ function carousel() {
 }
 
 $(document).ready(function() {
-  $.simpleWeather({
-    woeid: '2357536', //2357536
-    location: 'Portsmouth, UK',
-    unit: 'c',
-    success: function(weather) {
-      html = '<h2>'+weather.temp+'&deg;'+weather.units.temp+'</h2>';
-      html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
-      html += '<li class="currently">'+weather.currently+'</li>';
-      html += '<li>'+weather.alt.temp+'&deg;F</li></ul>';
+    $.simpleWeather({
+        woeid: '2357536', //2357536
+        location: 'Portsmouth, UK',
+        unit: 'c',
+        success: function(weather) {
+            html = '<h2>' + weather.temp + '&deg;' + weather.units.temp + '</h2>';
+            html += '<ul><li>' + weather.city + ', ' + weather.region + '</li>';
+            html += '<li class="currently">' + weather.currently + '</li>';
+            html += '<li>' + weather.alt.temp + '&deg;F</li></ul>';
 
-      for(var i=0;i<weather.forecast.length - 5;i++) {
-        html += '<p>'+weather.forecast[i].day+': '+weather.forecast[i].high+'&deg' + weather.units.temp +'</p>';
-      }
+            for (var i = 0; i < weather.forecast.length - 5; i++) {
+                html += '<p>' + weather.forecast[i].day + ': ' + weather.forecast[i].high + '&deg' + weather.units.temp + '</p>';
+            }
 
-      $("#weather").html(html);
-    },
-    error: function(error) {
-      $("#weather").html('<p>'+error+'</p>');
-    }
-  });
+            $("#weather").html(html);
+        },
+        error: function(error) {
+            $("#weather").html('<p>' + error + '</p>');
+        }
+    });
 });
 
 getDate();
