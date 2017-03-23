@@ -1,3 +1,5 @@
+var xhr = new XMLHttpRequest();
+
 $('#panel-example').scotchPanel({
     containerSelector: 'body', // As a jQuery Selector
     direction: 'left', // Make it toggle in from the left
@@ -7,6 +9,49 @@ $('#panel-example').scotchPanel({
     distanceX: '30%', // Size fo the toggle
     enableEscapeKey: true // Clicking Esc will close the panel
 });
+
+$(document).ready(function() {
+  $.simpleWeather({
+    woeid: '2357536', //2357536
+    location: 'Portsmouth, UK',
+    unit: 'c',
+    success: function(weather) {
+      html = '<h2>'+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+      html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
+      html += '<li class="currently">'+weather.currently+'</li>';
+      html += '<li>'+weather.alt.temp+'&deg;F</li></ul>';
+
+      for(var i=0;i<weather.forecast.length - 5;i++) {
+        html += '<p>'+weather.forecast[i].day+': '+weather.forecast[i].high+'&deg' + weather.units.temp +'</p>';
+      }
+
+      $("#weather").html(html);
+    },
+    error: function(error) {
+      $("#weather").html('<p>'+error+'</p>');
+    }
+  });
+});
+
+//SHOULD BE WORKING BUT ISN'T???
+function getWeather(){
+    var weatherTarget = document.getElementById("weathertest");
+
+    xhr.open("GET", "api.openweathermap.org/data/2.5/forecast?id=2639996&APPID=85f6c954f91e2a8c096daf99ee63b1fc");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == XMLHttpRequest.DONE){
+            console.log("Ready!");
+            if(xhr.status == 200){
+                console.log("Ready to update weather!" + xhr.responseText);
+            }
+            else if(xhr.status == 404){
+                console.log("You done fucked up bro");
+            }
+        }
+    }
+    xhr.send(null);
+}
+
 
 function getDate() {
   var today = new Date();
@@ -106,30 +151,8 @@ function carousel() {
     setTimeout(carousel, 8000); // Change image every 10 seconds
 }
 
-$(document).ready(function() {
-  $.simpleWeather({
-    woeid: '2357536', //2357536
-    location: 'Portsmouth, UK',
-    unit: 'c',
-    success: function(weather) {
-      html = '<h2>'+weather.temp+'&deg;'+weather.units.temp+'</h2>';
-      html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
-      html += '<li class="currently">'+weather.currently+'</li>';
-      html += '<li>'+weather.alt.temp+'&deg;F</li></ul>';
-
-      for(var i=0;i<weather.forecast.length - 5;i++) {
-        html += '<p>'+weather.forecast[i].day+': '+weather.forecast[i].high+'&deg' + weather.units.temp +'</p>';
-      }
-
-      $("#weather").html(html);
-    },
-    error: function(error) {
-      $("#weather").html('<p>'+error+'</p>');
-    }
-  });
-});
-
 getDate();
 startTime();
 carousel();
 show();
+getWeather();
