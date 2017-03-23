@@ -168,17 +168,8 @@ body {
 
 /* Weather styling */
 
-#weather {
-    text-align: center;
-    padding-top: 2rem;
-}
-
-#weather ul, h2 {
-    font-size: 3rem;
-    padding: 0;
+#weathercurrent{
     list-style-type: none;
-}
-
-#weather p {
-    font-size: 1.5rem;
+    text-align: center;
+    padding: 0;
 }

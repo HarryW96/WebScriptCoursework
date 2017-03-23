@@ -10,42 +10,67 @@ $('#panel-example').scotchPanel({
     enableEscapeKey: true // Clicking Esc will close the panel
 });
 
-$(document).ready(function() {
-  $.simpleWeather({
-    woeid: '2357536', //2357536
-    location: 'Portsmouth, UK',
-    unit: 'c',
-    success: function(weather) {
-      html = '<h2>'+weather.temp+'&deg;'+weather.units.temp+'</h2>';
-      html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
-      html += '<li class="currently">'+weather.currently+'</li>';
-      html += '<li>'+weather.alt.temp+'&deg;F</li></ul>';
+//Callback functions 
+var error = function (err, response, body) {
+    console.log('ERROR [%s]', err);
+};
+var success = function (data) {
+    console.log('Data [%s]', data);
+};
 
-      for(var i=0;i<weather.forecast.length - 5;i++) {
-        html += '<p>'+weather.forecast[i].day+': '+weather.forecast[i].high+'&deg' + weather.units.temp +'</p>';
-      }
-
-      $("#weather").html(html);
-    },
-    error: function(error) {
-      $("#weather").html('<p>'+error+'</p>');
-    }
-  });
-});
-
-//SHOULD BE WORKING BUT ISN'T???
 function getWeather(){
-    var weatherTarget = document.getElementById("weathertest");
+    var weatherTarget = document.getElementById("weathercurrent");
+    var weatherLocation = document.getElementById("location");
+    var weatherType = document.getElementById("weather");
+    var weatherTemp = document.getElementById("temp");
+    var weatherWind = document.getElementById("wind");
 
-    xhr.open("GET", "api.openweathermap.org/data/2.5/forecast?id=2639996&APPID=85f6c954f91e2a8c096daf99ee63b1fc");
+    xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?id=2639996&units=metric&APPID=85f6c954f91e2a8c096daf99ee63b1fc");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == XMLHttpRequest.DONE){
             console.log("Ready!");
             if(xhr.status == 200){
-                console.log("Ready to update weather!" + xhr.responseText);
+                var weatherJson = xhr.responseText;
+                var weatherData = JSON.parse(xhr.responseText);
+                
+                console.log("Ready to update weather!");
+
+                weatherLocation.innerHTML = "Location: " + weatherData.name;
+                weatherType.innerHTML = "Weather: " + weatherData.weather[0].main; 
+                weatherTemp.innerHTML =  "Temperature: " + weatherData.main.temp + "°C";
+                weatherWind.innerHTML = "Wind speed: " + weatherData.wind.speed + "m/s";
+ 
+
             }
             else if(xhr.status == 404){
-                console.log("You done fucked up bro");
+                console.log("It's really not working");
+            }
+        }
+    }
+    xhr.send(null);
+}
+
+function getNews(){
+    var title1 = document.getElementById("title1");
+    var title2 = document.getElementById("title2");
+    var title3 = document.getElementById("title3");
+    var desc1 = document.getElementById("desc1");
+    var desc2 = document.getElementById("desc2");
+    var desc3 = document.getElementById("desc3");
+    var url1 = document.getElementById("url1");
+    var url2 = document.getElementById("url2");
+    var url3 = document.getElementById("url3");
+
+    xhr.open("GET", "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=513e603a4336419ca1bd9ee2b6738dd5");
+    xhr.onreadystatechange == function(){
+        if(xhr.readyState == XMLHttpRequest.DONE){
+            console.log("Ready!");
+            if(xhr.status == 200){
+                console.log("LETS DO THIS SHIT BOIZZZ!");
+
+            }
+            else if(xhr.status == 404){
+                console.log("Again, it's really not working.");
             }
         }
     }
@@ -151,34 +176,9 @@ function carousel() {
     setTimeout(carousel, 8000); // Change image every 10 seconds
 }
 
-<<<<<<< HEAD
-$(document).ready(function() {
-    $.simpleWeather({
-        woeid: '2357536', //2357536
-        location: 'Portsmouth, UK',
-        unit: 'c',
-        success: function(weather) {
-            html = '<h2>' + weather.temp + '&deg;' + weather.units.temp + '</h2>';
-            html += '<ul><li>' + weather.city + ', ' + weather.region + '</li>';
-            html += '<li class="currently">' + weather.currently + '</li>';
-            html += '<li>' + weather.alt.temp + '&deg;F</li></ul>';
-
-            for (var i = 0; i < weather.forecast.length - 5; i++) {
-                html += '<p>' + weather.forecast[i].day + ': ' + weather.forecast[i].high + '&deg' + weather.units.temp + '</p>';
-            }
-
-            $("#weather").html(html);
-        },
-        error: function(error) {
-            $("#weather").html('<p>' + error + '</p>');
-        }
-    });
-});
-
-=======
->>>>>>> origin/master
 getDate();
 startTime();
 carousel();
 show();
+getNews();
 getWeather();
