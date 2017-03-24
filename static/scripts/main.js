@@ -96,25 +96,31 @@ function getNews(){
     xhr.send(null);
 }
 
-//Get looked at tomorrow
 function showDashboardOnly(){
-  var carousel = document.getElementsByClassName("carousel-wrap");
-  var dashboard = document.getElementsByClassName("column-wrap");
+  var carousel = document.getElementById("carousel-wrap");
+  var dashboard = document.getElementById("column-wrap");
 
-  dashboard.style.display = "block";
-  carousel.style.display = "none";
+  if(dashboard.className == "hidden"){
+    
+    dashboard.className = "visible";
+    carousel.className = "hidden";
 
-  window.setTimeout(showSlideshowOnly(), 5000);
+  }
+
+  window.setTimeout(showSlideshowOnly, 10000);
 }
 
 function showSlideshowOnly(){
-  var carousel = document.getElementsByClassName("carousel-wrap");
-  var dashboard = document.getElementsByClassName("column-wrap");
+  var carousel = document.getElementById("carousel-wrap");
+  var dashboard = document.getElementById("column-wrap");
 
-  dashboard.style.display = "none";
-  carousel.style.display = "block";
+  if(carousel.className == "hidden"){
 
-  window.setTimeout(showDashboardOnly(), 5000);
+    carousel.className = "visible";
+    dashboard.className = "hidden";
+  }
+
+  window.setTimeout(showDashboardOnly, 10000);
 }
 
 function getDate() {

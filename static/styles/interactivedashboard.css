@@ -34,7 +34,17 @@ html {
     top: 1px;
 }
 
+.hidden{
+    display: none;
+    opacity: 0;
+    transition: 0.5s;
+}
 
+.visible{
+    display: block;
+    opacity: 1; 
+    transition: 0.5s;
+}
 /*index.html styling*/
 
 body {
@@ -65,7 +75,7 @@ body {
     font-size: 4rem;
 }
 
-.column-wrap {
+#column-wrap {
     min-height: 100%;
     padding-top: 2rem;
 }
@@ -156,7 +166,7 @@ body {
 
 /*Image Carousel Styling*/
 
-.carousel-wrap{
+#carousel-wrap{
     text-align: center;
 }
 
