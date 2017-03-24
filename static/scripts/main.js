@@ -141,7 +141,9 @@ function startTime() {
     var s = today.getSeconds();
     m = checkTime(m);
     s = checkTime(s);
-    document.getElementById('clock-widget').innerHTML =
+    document.getElementById('dashboard-clock-widget').innerHTML =
+        h + ":" + m + " GMT";
+     document.getElementById('carousel-clock-widget').innerHTML =
         h + ":" + m + " GMT";
     var t = setTimeout(startTime, 500);
 }
