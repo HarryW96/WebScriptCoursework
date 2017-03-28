@@ -1,10 +1,10 @@
 /*General Styling*/
 
+/*Colours: #202021; */
+
 * {
-  margin: 0;
-  color: white;
   font-family: 'Roboto Mono', monospace;
-  background-color: #202021;
+  margin: 0;
 }
 
 html {
@@ -14,58 +14,101 @@ html {
 .hidden{
     opacity: 0;
     transform: opacity 1s ease-in-out;
-     -moz-transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
 }
 
 .visible{
     opacity: 1; 
+    transform: opacity 1s ease-in-out;
     -moz-transition: opacity .25s ease-in-out;
-
 }
 
 body {
     min-height: 100%;
+    background-color: #202021;
+    color: white;
 }
 
 #column-wrap {
     position: absolute;
     top: 0;
     left: 0;
-    min-height: 100%;
+    min-height: 95%;
+    padding: 15px;
 }
 
 .first-column {
     width: 33%;
-    height: 100%;
+    height: 95%;
     float: left;
 }
 
 .second-column {
     width: 34%;
-    height: 100%;
+    height: 95%;
     float: left;
 }
 
 .third-column {
     width: 33%;
-    height: 100%;
+    height: 95%;
     float: right;
+}
+
+#dash-themes{
+  display: flex;
+}
+
+#dash-themes p{
+  padding-left: 10px;
+}
+
+/*Setup Styling*/
+#setup-wrap{
+  position: absolute;
+  top: 0; 
+  left: 0;
+  min-height: 100%;
+  max-height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+#display-name{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+#name-input, #submit-name{
+  padding: 5px;
+}
+
+#input-name-wrap{
+  padding-bottom: 1rem;
+}
+
+#start-button{
+  margin-top: 1rem;
+  padding: 5px;
 }
 
 /*Date Styling*/
 #date {
     text-align: center;
-    font-size: 2rem;
-    padding-top: 1rem;
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
 
 /*Clock styling*/
 
 #dashboard-clock-widget {
-    padding-top: 1rem;
+    margin-top: 1rem;
+    margin-right: 3rem;
+    margin-left: 3rem;
     text-align: center;
     font-size: 2.5rem;
-    color: white;
     height: 5rem;
 }
 
@@ -73,14 +116,17 @@ body {
     padding-top: 1rem;
     text-align: center;
     font-size: 2.5rem;
-    color: white;
     height: 3rem;
 }
 
 /*To do list styling*/
 
 #to-do-widget {
-    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+#to-do-widget h4{
+  padding-bottom: 5px;
 }
 
 #input-wrap {
@@ -91,7 +137,7 @@ body {
     list-style-type: none;
     margin: 0;
     padding-left: 10px;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 #todos li {
@@ -169,13 +215,13 @@ body {
 /* News styling */
 
 .news{
-    padding-left: 0.5rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 #story1{
-    padding-bottom: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 #story2{

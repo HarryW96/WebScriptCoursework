@@ -1,12 +1,13 @@
-$('#panel-example').scotchPanel({
-    containerSelector: 'body', // As a jQuery Selector
-    direction: 'left', // Make it toggle in from the left
-    duration: 800, // Speed in ms how fast you want it to be
-    transition: 'ease', // CSS3 transition type: linear, ease, ease-in, ease-out, ease-in-out, cubic-bezier(P1x,P1y,P2x,P2y)
-    clickSelector: '.toggle-panel', // Enables toggling when clicking elements of this class
-    distanceX: '30%', // Size fo the toggle
-    enableEscapeKey: true // Clicking Esc will close the panel
-});
+var startButton = document.getElementById("start-button");
+var submitName = document.getElementById("submit-name");
+
+var lightTheme = document.getElementById("light-theme");
+var darkTheme = document.getElementById("dark-theme");
+var coloredTheme = document.getElementById("colored-theme");
+
+var dashLightTheme = document.getElementById("dash-light-theme");
+var dashDarkTheme = document.getElementById("dash-dark-theme");
+var dashColoredTheme = document.getElementById("dash-colored-theme");
 
 //Callback functions 
 var error = function (err, response, body) {
@@ -16,6 +17,59 @@ var success = function (data) {
     console.log('Data [%s]', data);
 };
 
+//Change Name on button click, set up page.
+function changeName(){
+  var name;
+  var nameDisplay = document.getElementById("display-name");
+  var dashNameDisplay = document.getElementById("dash-display-name");
+  var inputForm = document.getElementById("name-input");
+
+  name = inputForm.value;
+
+  nameDisplay.textContent = "Welcome " + name;
+  dashNameDisplay.textContent = "Welcome " + name;
+};
+
+//Event listener for name change.
+submitName.addEventListener("click", changeName);
+
+//Change to light theme
+function changeLightTheme(){
+    document.body.style.backgroundColor = "#e3e3e5";
+    document.body.style.color = "black";
+    console.log("changing THEME");
+}
+
+//Event listener to change to light theme
+lightTheme.addEventListener("click", changeLightTheme);
+dashLightTheme.addEventListener("click", changeLightTheme);
+
+//Change to dark theme
+function changeDarkTheme(){
+    document.body.style.backgroundColor = "#202021";
+    document.body.style.color = "white";
+       console.log("changing THEME");
+}
+
+//Event listener to change to dark theme
+darkTheme.addEventListener("click", changeDarkTheme);
+dashDarkTheme.addEventListener("click", changeDarkTheme);
+
+//Change to colored theme using random color from an array
+function changeColoredTheme(){
+
+    var colors = ['#f96666', '#66f968', '#669ef9', '#ff8114', '#ca4fff'];
+    document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+    document.body.style.color = "black";
+       console.log("changing THEME");
+}
+
+//Event listener to change to colored theme
+coloredTheme.addEventListener("click", changeColoredTheme);
+dashColoredTheme.addEventListener("click", changeColoredTheme);
+
+//XHR Request to get today's and tomorrow's weather from openweathermap API.
 function getWeather(){
     var xhr = new XMLHttpRequest();
     var weatherTarget = document.getElementById("weathercurrent");
@@ -57,6 +111,7 @@ function getWeather(){
     xhr.send(null);
 }
 
+//XHR request to get data from newsapi and apply it into dashboard.
 function getNews(){
     var xhr = new XMLHttpRequest();
     var title1 = document.getElementById("title1");
@@ -96,9 +151,24 @@ function getNews(){
     xhr.send(null);
 }
 
-function showDashboardOnly(){
+//Hide carousel and dashboard on startup until user says to start dashboard.
+function startUp(){
   var carousel = document.getElementById("carousel-wrap");
   var dashboard = document.getElementById("column-wrap");
+
+  carousel.style.display = "none";
+  dashboard.style.display = "none";
+}
+
+//Show only the dashboard.
+function showDashboardOnly(){
+  var startUp = document.getElementById("setup-wrap");
+  var carousel = document.getElementById("carousel-wrap");
+  var dashboard = document.getElementById("column-wrap");
+
+  startUp.style.display = "none";
+  carousel.style.display = "block";
+  dashboard.style.display = "block";
 
   if(dashboard.className == "hidden"){
     
@@ -110,6 +180,7 @@ function showDashboardOnly(){
   window.setTimeout(showSlideshowOnly, 10000);
 }
 
+//Show only the carousel and time.
 function showSlideshowOnly(){
   var carousel = document.getElementById("carousel-wrap");
   var dashboard = document.getElementById("column-wrap");
@@ -123,6 +194,7 @@ function showSlideshowOnly(){
   window.setTimeout(showDashboardOnly, 10000);
 }
 
+//Get current date and display on dashboard.
 function getDate() {
     var today = new Date();
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -223,6 +295,7 @@ function carousel() {
     setTimeout(carousel, 8000); // Change image every 10 seconds
 }
 
+startButton.addEventListener("click", showSlideshowOnly);
 
 getDate();
 startTime();
@@ -230,4 +303,5 @@ carousel();
 show();
 getNews();
 getWeather();
-showDashboardOnly();
+startUp();
+//showDashboardOnly();

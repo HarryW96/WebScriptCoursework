@@ -18,10 +18,31 @@
 
     <!--Custom fonts-->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-
 </head>
+  <body>
 
-<body>
+<!--User setup-->
+
+  <div id="setup-wrap" class="visible"> 
+
+    <h1 id="display-name">Welcome</h1>
+
+    <div id="input-name-wrap">
+      <input id="name-input" type="text" name="Enter Name">  
+      <button id="submit-name">Change Name</button>
+    </div>
+    
+
+    <h2>Choose your theme!</h2>
+
+    <p id="light-theme">Light</p>  
+    <p id="dark-theme">Dark</p>
+    <p id="colored-theme">Colour</p>
+
+    <button id="start-button">Start Dashboard!</button>
+
+  </div>
+
 <!--Image Carousel and Clock-->
     <div id="carousel-wrap" class="hidden">
 
@@ -38,18 +59,18 @@
 <!--Main dashboard-->
     <div id="column-wrap" class="hidden">
 
-        <button class="turn-on-dash">Activate Dashboard</button>
+      <div class="first-column">
 
-        <div class="first-column">
+        <div class="settings">
+          <h1 id="dash-display-name">Welcome</h1>
 
-        <!--To Do List-->
-            <div id="to-do-widget">
-                <div id="input-wrap">
-                    <input id="task">
-                    <button id="add">Add</button>
-                </div>
-                <div id="todos"></div>
-            </div>
+          <h3>Change theme:</h3>
+
+          <p id="dash-light-theme">Light</p>  
+          <p id="dash-dark-theme">Dark</p>
+          <p id="dash-colored-theme">Colour</p>
+
+        </div>
         
         <!--News-->
             <div class="news">
@@ -106,8 +127,19 @@
             <div class="twitter-feed">
                 <a class="twitter-timeline" href="https://twitter.com/TwitterDev/timelines/539487832448843776" data-height="450">National Park Tweets</a>
             </div>
+
+        <!--To Do List-->
+            <div id="to-do-widget">
+              <h4>To Do</h4>
+                <div id="input-wrap">
+                    <input id="task">
+                    <button id="add">Add</button>
+                </div>
+                <div id="todos"></div>
+            </div>
+
         </div>
-    </div>
+      </div>
 
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script type="text/javascript" src="scripts/main.js"></script>
