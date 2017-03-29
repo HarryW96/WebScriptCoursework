@@ -37,7 +37,6 @@ submitName.addEventListener("click", changeName);
 function changeLightTheme(){
     document.body.style.backgroundColor = "#e3e3e5";
     document.body.style.color = "black";
-    console.log("changing THEME");
 }
 
 //Event listener to change to light theme
@@ -48,7 +47,6 @@ dashLightTheme.addEventListener("click", changeLightTheme);
 function changeDarkTheme(){
     document.body.style.backgroundColor = "#202021";
     document.body.style.color = "white";
-       console.log("changing THEME");
 }
 
 //Event listener to change to dark theme
@@ -62,7 +60,6 @@ function changeColoredTheme(){
     document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
     document.body.style.color = "black";
-       console.log("changing THEME");
 }
 
 //Event listener to change to colored theme
@@ -123,6 +120,13 @@ function getNews(){
     var url1 = document.getElementById("url1");
     var url2 = document.getElementById("url2");
     var url3 = document.getElementById("url3");
+    var newsSelector = document.getElementById("news-select");
+    var newsChoice
+
+    /*
+    newsChoice = newsSelector.value;
+    xhr.open("GET", "https://newsapi.org/v1/articles?" + newsChoice + "&apiKey=513e603a4336419ca1bd9ee2b6738dd5");
+    */
 
     xhr.open("GET", "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=513e603a4336419ca1bd9ee2b6738dd5");
     xhr.onreadystatechange = function(){
