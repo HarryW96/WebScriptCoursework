@@ -12,13 +12,13 @@ html {
 .hidden {
     opacity: 0;
     transform: opacity 1s ease-in-out;
-    -moz-transition: opacity .25s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
 }
 
 .visible {
     opacity: 1;
     transform: opacity 1s ease-in-out;
-    -moz-transition: opacity .25s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
 }
 
 body {
@@ -35,12 +35,17 @@ body {
 }
 
 .first-column, .second-column {
-    width: 30%;
+    width: 32%;
     height: 95%;
     float: left;
     margin: 5px;
 }
 
+@media only screen and (min-width: 64.063em) { 
+    .second-column{
+        padding-left: 30px;
+    }
+}
 .third-column {
     width: 30%;
     height: 95%;
@@ -48,15 +53,42 @@ body {
     margin: 5px;
 }
 
+.widget{
+    background-color: #4f4f51;
+    border-radius: 25px;
+}
+
+#widget{
+    background-color: #4f4f51;
+    border-radius: 25px;
+}
+
+@media only screen and (min-width: 64.063em) { 
+
+    .first-column, .second-column {
+        width: 30%;
+        height: 95%;
+        float: left;
+        margin: 15px;
+    }
+
+    .third-column {
+        width: 30%;
+        height: 95%;
+        float: right;
+        margin: 15px;
+    }
+
+    .widget{
+        padding: 15px;
+    }
+
+    #widget{
+        padding: 15px;
+    }
+
+}
 /* Theme chooser*/
-
-#dash-themes {
-    display: flex;
-}
-
-#dash-themes p {
-    padding-left: 10px;
-}
 
 #light-theme, #dark-theme, #colored-theme:hover {
     cursor: pointer;
@@ -66,6 +98,21 @@ body {
     cursor: pointer;
 }
 
+@media only screen and (min-width: 64.063em) { 
+
+    #dash-display-name{
+        font-size: 1.5rem;
+    }
+
+    .settings p{
+        margin-top: 10px;
+    }
+
+    .settings h4{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
 /*Loading animation*/
 
 #spinner {
@@ -134,12 +181,13 @@ body {
 }
 
 #display-name {
+    font-size: 3rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
 #name-input, #submit-name {
-    padding: 5px;
+    padding: 10px;
 }
 
 #input-name-wrap {
@@ -148,7 +196,20 @@ body {
 
 #start-button {
     margin-top: 1rem;
-    padding: 5px;
+    padding: 10px;
+}
+
+#dash-speed-wrap{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#dash-speed-wrap h2{
+    padding-bottom: 1rem;
+}
+
+#dash-speed-select{
+    padding: 10px;
 }
 
 /*Date Styling*/
@@ -169,14 +230,18 @@ body {
     margin-left: 3rem;
     text-align: center;
     font-size: 2.5rem;
-    height: 5rem;
 }
 
 #carousel-clock-widget {
+    z-index: 1;
+    position: relative;
     padding-top: 1rem;
+    padding-right: 1rem;
     text-align: center;
     font-size: 2.5rem;
     height: 3rem;
+    float: right;
+    color: black;
 }
 
 /*To do list styling*/
@@ -235,20 +300,26 @@ body {
 
 #carousel-wrap {
     text-align: center;
-    important! position: absolute;
+    position: absolute important!;
     top: 0;
     left: 0;
 }
 
 .carousel-img {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
     text-align: center;
-    height: 75vh;
-    width: 100vh;
+    height: 1080px;
+    width: 100%;
+    transform: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
 }
 
 .image-carousel {
-    padding-top: 1rem;
     width: 100%;
+    height: 100%;
 }
 
 /* Weather styling */
@@ -259,6 +330,7 @@ body {
     padding-left: 0;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 #weathertomorrow {
@@ -267,13 +339,24 @@ body {
     padding-left: 0;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    margin-top: 1rem;
 }
 
+@media only screen and (min-width: 64.063em) { 
+    #weathercurrent h3, #weathertomorrow h3{
+        font-size: 2rem;
+    }
+
+    #weathercurrent li, #weathertomorrow li{
+        font-size: 1.75rem;
+    }
+
+}
 /* News styling */
 
 .news {
     margin-top: 1.5rem;
-    margin-bottom: 1rem;
+    max-height: 700px;
 }
 
 .news p {
@@ -292,4 +375,43 @@ body {
 
 #story2, #story3 {
     padding-bottom: 1rem;
+}
+
+@media only screen and (min-width: 64.063em) { 
+
+    .news h2{
+        font-size: 1.25rem;
+        padding-bottom: 0.5rem;
+    }
+    
+    .news p {
+        font-size: 0.85rem;
+    }
+
+    #title1, #title2, #title3 {
+        font-weight: bold;
+        font-size: 1rem;
+    }
+
+    #url1, #url2, #url3{
+        padding-top: 7.5px;
+    }
+}
+
+/*Quote widget*/
+
+#quote-widget{
+    margin-top: 1rem;
+}
+
+#quote-widget h2{
+    padding-bottom: 5px;
+}
+
+#quote{
+    padding-bottom: 5px;
+}
+
+#author{
+    font-weight: bold;
 }

@@ -26,7 +26,9 @@ function start(){
   show();
   getNews();
   getWeather();
+  getQuote();
   startUp();
+  //showDashboardOnly();
 }
 
 //Change Name on button click, set up page.
@@ -47,8 +49,19 @@ submitName.addEventListener("click", changeName);
 
 //Change to light theme
 function changeLightTheme() {
+    var widgetId = document.getElementById("widget");
+
     document.body.style.backgroundColor = "#e3e3e5";
     document.body.style.color = "black";
+
+    document.getElementById("news").style.backgroundColor = "#c1c1c1";
+    document.getElementById("weathercurrent").style.backgroundColor = "#c1c1c1";
+    document.getElementById("weathertomorrow").style.backgroundColor = "#c1c1c1";
+    document.getElementById("date").style.backgroundColor = "#c1c1c1";
+    document.getElementById("dashboard-clock-widget").style.backgroundColor = "#c1c1c1";
+    document.getElementById("to-do-widget").style.backgroundColor = "#c1c1c1";
+    document.getElementById("quote-widget").style.backgroundColor = "#c1c1c1";
+    widgetId.style.backgroundColor = "#c1c1c1";
 }
 
 //Event listener to change to light theme
@@ -57,8 +70,19 @@ dashLightTheme.addEventListener("click", changeLightTheme);
 
 //Change to dark theme
 function changeDarkTheme() {
+    var widgetId = document.getElementById("widget");
+
     document.body.style.backgroundColor = "#202021";
     document.body.style.color = "white";
+
+    document.getElementById("news").style.backgroundColor = "#4f4f51";
+    document.getElementById("weathercurrent").style.backgroundColor = "#4f4f51";
+    document.getElementById("weathertomorrow").style.backgroundColor = "#4f4f51";
+    document.getElementById("date").style.backgroundColor = "#4f4f51";
+    document.getElementById("dashboard-clock-widget").style.backgroundColor = "#4f4f51";
+    document.getElementById("to-do-widget").style.backgroundColor = "#4f4f51";
+    document.getElementById("quote-widget").style.backgroundColor = "#4f4f51";
+    widgetId.style.backgroundColor = "#4f4f51";
 }
 
 //Event listener to change to dark theme
@@ -67,11 +91,25 @@ dashDarkTheme.addEventListener("click", changeDarkTheme);
 
 //Change to colored theme using random color from an array
 function changeColoredTheme() {
+    var widgetId = document.getElementById("widget");
 
-    var colors = ['#f96666', '#66f968', '#669ef9', '#ff8114', '#ca4fff'];
-    document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-
+    //Colors and color pickers
+    var dashColors = ['#f96666', '#66f968', '#669ef9', '#ff8114', '#ca4fff'];
+    var dashColorPicker = dashColors[Math.floor(Math.random() * dashColors.length)];
+    var widgetColors = ['#fc8a8a', '#8df48f', '#94bcfc', '#ffa659', '#d684f9'];
+    var widgetColorPicker = widgetColors[Math.floor(Math.random() * widgetColors.length)];
+    
+    document.body.style.backgroundColor = dashColorPicker;
     document.body.style.color = "black";
+
+    document.getElementById("news").style.backgroundColor = widgetColorPicker;
+    document.getElementById("weathercurrent").style.backgroundColor = widgetColorPicker;
+    document.getElementById("weathertomorrow").style.backgroundColor = widgetColorPicker;
+    document.getElementById("date").style.backgroundColor = widgetColorPicker;
+    document.getElementById("dashboard-clock-widget").style.backgroundColor = widgetColorPicker;
+    document.getElementById("to-do-widget").style.backgroundColor = widgetColorPicker;
+    document.getElementById("quote-widget").style.backgroundColor = widgetColorPicker;
+    widgetId.style.backgroundColor = widgetColorPicker;
 }
 
 //Event listener to change to colored theme
@@ -91,7 +129,12 @@ function getWeather() {
     var tomorrowTemp = document.getElementById("temptmrrw");
     var tomorrowWind = document.getElementById("windtmrrw");
 
-    xhr.open("GET", "http://api.openweathermap.org/data/2.5/forecast?id=2639996&units=metric&APPID=85f6c954f91e2a8c096daf99ee63b1fc");
+    var weatherSelect = document.getElementById("weather-select");
+    var weatherChoice;
+
+    weatherChoice = weatherSelect.value;
+
+    xhr.open("GET", "http://api.openweathermap.org/data/2.5/forecast?" + weatherChoice + "&units=metric&APPID=85f6c954f91e2a8c096daf99ee63b1fc");
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE) {
@@ -119,6 +162,8 @@ function getWeather() {
     xhr.send(null);
 }
 
+document.getElementById("weather-select").addEventListener("change", getWeather);
+
 //XHR request to get data from newsapi and apply it into dashboard based on whatever source user selects from dropdown menu
 function getNews() {
     var xhr = new XMLHttpRequest()
@@ -144,8 +189,6 @@ function getNews() {
                 document.getElementById("url2").innerHTML = newsData.articles[1].url;
                 document.getElementById("url3").innerHTML = newsData.articles[2].url;
 
-                console.log(document.getElementById("bbc-sport").textContent);
-
             } else if (xhr.status == 404) {
                 console.log("It's really not working");
             }
@@ -153,8 +196,34 @@ function getNews() {
     }
     xhr.send(null);
 }
+
 //On dropdown menu change rerun the getNews() function to update
 document.getElementById("news-select").addEventListener("change", getNews);
+
+//XHR request to get quote data from api.
+function getQuote() {
+    var xhr = new XMLHttpRequest()
+
+    xhr.open("GET", "http://quotes.rest/qod.json");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status == 200) {
+                var quoteJson = xhr.responseText;
+                var quoteData = JSON.parse(xhr.responseText);
+
+                console.log("Ready to get a quote!");
+
+                document.getElementById("quote").innerHTML = quoteData.contents.quotes[0].quote;
+                document.getElementById("author").innerHTML = quoteData.contents.quotes[0].author;
+
+
+            } else if (xhr.status == 404) {
+                console.log("It's really really not working");
+            }
+        }
+    }
+    xhr.send(null);
+}
 
 //Hide carousel and dashboard on startup until user says to start dashboard.
 function startUp() {
@@ -172,11 +241,17 @@ function startSpinner() {
     loadAni.style.opacity = "1";
 }
 
+//Start dashboard once start button clicked
+function startDashboard(){
+    window.setTimeout(showDashboardOnly, 5000);
+}
+
 //Show only the dashboard.
 function showDashboardOnly() {
     var startUp = document.getElementById("setup-wrap");
     var carousel = document.getElementById("carousel-wrap");
     var dashboard = document.getElementById("column-wrap");
+    var speedSelect = document.getElementById("dash-speed-select");
 
     startUp.style.display = "none";
     carousel.style.display = "block";
@@ -189,21 +264,23 @@ function showDashboardOnly() {
 
     }
 
-    window.setTimeout(showSlideshowOnly, 10000);
+    window.setTimeout(showSlideshowOnly, speedSelect.value);
 }
 
 //Show only the carousel and time.
 function showSlideshowOnly() {
     var carousel = document.getElementById("carousel-wrap");
     var dashboard = document.getElementById("column-wrap");
+    var speedSelect = document.getElementById("dash-speed-select");
 
     if (carousel.className == "hidden") {
 
         carousel.className = "visible";
         dashboard.className = "hidden";
+
     }
 
-    window.setTimeout(showDashboardOnly, 10000);
+    window.setTimeout(showDashboardOnly, speedSelect.value);
 }
 
 //Get current date and display on dashboard.
@@ -227,9 +304,9 @@ function startTime() {
     m = checkTime(m);
     s = checkTime(s);
     document.getElementById('dashboard-clock-widget').innerHTML =
-        h + ":" + m + " GMT";
+        h + ":" + m;
     document.getElementById('carousel-clock-widget').innerHTML =
-        h + ":" + m + " GMT";
+        h + ":" + m;
     var t = setTimeout(startTime, 500);
 }
 
@@ -303,16 +380,16 @@ function carousel() {
     var i;
     var x = document.getElementsByClassName("carousel-img");
     for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
+        x[i].style.opacity = "0";
     }
     slideIndex++;
     if (slideIndex > x.length) {
         slideIndex = 1
     }
-    x[slideIndex - 1].style.display = "inline";
-    setTimeout(carousel, 8000); // Change image every 10 seconds
+    x[slideIndex - 1].style.opacity = "1";
+    setTimeout(carousel, 15000); // Change image every 15 seconds
 }
 
-startButton.addEventListener("click", showSlideshowOnly);
+startButton.addEventListener("click", startDashboard);
 startButton.addEventListener("click", startSpinner);
 window.addEventListener("load", start);

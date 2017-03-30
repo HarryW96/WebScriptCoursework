@@ -32,11 +32,26 @@
         </div>
 
 
-        <h2>Choose your theme!</h2>
+        <h2>Choose your theme:</h2>
 
         <p id="light-theme">Light</p>
         <p id="dark-theme">Dark</p>
         <p id="colored-theme">Colour</p>
+
+        <div id="dash-speed-wrap">
+            <h2>Choose dashboard fade speed:</h2>
+            
+            <select name="fadeSpeed" id="dash-speed-select">
+                <option value="5000">5 Seconds</option>
+                <option value="10000">10 Seconds</option>
+                <option value="20000">20 Seconds</option>
+                <option value="30000">30 Seconds</option>
+                <option value="45000">45 Seconds</option>
+                <option value="60000">1 Minute</option>
+                <option value="90000">1 Minute 30 Seconds</option>
+                <option value="120000">2 Minutes</option>
+            </select>
+        </div>
 
         <button id="start-button">Start Dashboard!</button>
 
@@ -55,10 +70,10 @@
         <div id="carousel-clock-widget"></div>
 
         <div class="image-carousel">
-            <img class="carousel-img" src="img/inspo1.jpg" alt="">
-            <img class="carousel-img" src="img/inspo2.jpg" alt="">
-            <img class="carousel-img" src="img/inspo3.jpg" alt="">
-            <img class="carousel-img" src="img/inspo4.jpg" alt="">
+            <img class="carousel-img" src="img/img1.jpg" alt="">
+            <img class="carousel-img" src="img/img2.jpg" alt="">
+            <img class="carousel-img" src="img/img3.jpg" alt="">
+            <img class="carousel-img" src="img/img4.jpg" alt="">
         </div>
     </div>
 
@@ -67,25 +82,38 @@
 
         <div class="first-column">
 
-            <div class="settings">
-                <h1 id="dash-display-name">Welcome</h1>
+            <div class="settings" id="widget">
+                <h2 id="dash-display-name">Welcome</h2>
 
-                <h3>Change theme:</h3>
+                <h4>Change theme:</h4>
 
                 <p id="dash-light-theme">Light</p>
                 <p id="dash-dark-theme">Dark</p>
-                <p id="dash-colored-theme">Colour</p>
+                <p id="dash-colored-theme">Colour (Click me for more)</p>
+
+                <h4>Change weather location:</h4>
+
+                <select name="weatherLocation" id="weather-select">
+                    <option value="id=2639996">Portsmouth</option>
+                    <option value="id=2643743">London</option>
+                    <option value="id=5128638">New York</option>
+                    <option value="id=6618620">Paris</option>
+                    <option value="id=6356055">Barcelona</option>
+                </select>
 
             </div>
 
             <!--News-->
-            <div class="news">
+            <div class="news widget" id="news">
                 <h2>News</h2>
 
                 <select name="NewsSource" id="news-select">
                   <option value="source=bbc-sport&sortBy=top" id="bbc-sport">BBC Sport</option>
                   <option value="source=bbc-news&sortBy=top">BBC News</option>
                   <option value="source=daily-mail&sortBy=top">Daily Mail</option>
+                  <option value="source=cnn&sortBy=top">CNN</option>
+                  <option value="source=reddit-r-all&sortBy=top">Reddit</option>
+                  <option value="source=espn&sortBy=top">ESPN</option>
                 </select>
 
                 <div id="story1">
@@ -112,13 +140,20 @@
         <div class="second-column">
 
             <!--Date-->
-            <div id="date"></div>
+            <div id="date" id="widget" class="widget"></div>
 
             <!--Clock-->
-            <div id="dashboard-clock-widget"></div>
+            <div id="dashboard-clock-widget" class="widget"></div>
+
+            <!--Quote-->
+            <div id="quote-widget" class="widget">
+                <h2>Quote of the day</h2>
+                <p id="quote">Quote will go here</p>
+                <p id="author">Author will go here</p>
+            </div>
 
             <!--Today's Weather-->
-            <ul id='weathercurrent'>
+            <ul id="weathercurrent" class="widget">
                 <h3>Today's Weather</h3>
                 <li id='location'></li>
                 <li id="weather"></li>
@@ -127,7 +162,7 @@
             </ul>
 
             <!--Tomorrow's Weather-->
-            <ul id='weathertomorrow'>
+            <ul id="weathertomorrow" class="widget">
                 <h3>Tomorrow's Weather</h3>
                 <li id="weathertmrrw"></li>
                 <li id="temptmrrw"></li>
@@ -144,7 +179,7 @@
             </div>
 
             <!--To Do List-->
-            <div id="to-do-widget">
+            <div id="to-do-widget" class="widget">
                 <h4>To Do</h4>
                 <div id="input-wrap">
                     <input id="task">
