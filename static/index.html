@@ -9,49 +9,47 @@
 
     <!--Stylesheets-->
     <link rel="stylesheet" href="styles/interactivedashboard.css">
-    
+
     <!--Javascript-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.0/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/scripts/scotch-panels-master/dist/scotchPanels.js"></script>
 
     <!--Custom fonts-->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 </head>
-  <body>
 
-<!--User setup-->
+<body>
 
-  <div id="setup-wrap" class="visible"> 
+    <!--User setup-->
+    <div id="setup-wrap" class="visible">
 
-    <h1 id="display-name">Welcome</h1>
+        <h1 id="display-name">Welcome</h1>
 
-    <div id="input-name-wrap">
-      <input id="name-input" type="text" name="Enter Name">  
-      <button id="submit-name">Change Name</button>
+        <div id="input-name-wrap">
+            <input id="name-input" type="text" name="Enter Name">
+            <button id="submit-name">Change Name</button>
+        </div>
+
+
+        <h2>Choose your theme!</h2>
+
+        <p id="light-theme">Light</p>
+        <p id="dark-theme">Dark</p>
+        <p id="colored-theme">Colour</p>
+
+        <button id="start-button">Start Dashboard!</button>
+
+        <div id="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+        </div>
+
     </div>
-    
 
-    <h2>Choose your theme!</h2>
-
-    <p id="light-theme">Light</p>  
-    <p id="dark-theme">Dark</p>
-    <p id="colored-theme">Colour</p>
-
-    <h2>News Source</h2>
-
-    <select name="NewsSource" id="news-select">
-      <option value="source=bbc-news&sortBy=top">BBC News</option>
-      <option value="source=bbc-sport&sortBy=top">BBC Sport</option>
-      <option value="source=daily-mail&sortBy=top">Daily Mail</option>
-    </select>
-
-    <button id="start-button">Start Dashboard!</button>
-
-  </div>
-
-<!--Image Carousel and Clock-->
+    <!--Image Carousel and Clock-->
     <div id="carousel-wrap" class="hidden">
 
         <div id="carousel-clock-widget"></div>
@@ -64,53 +62,62 @@
         </div>
     </div>
 
-<!--Main dashboard-->
+    <!--Main dashboard-->
     <div id="column-wrap" class="hidden">
 
-      <div class="first-column">
+        <div class="first-column">
 
-        <div class="settings">
-          <h1 id="dash-display-name">Welcome</h1>
+            <div class="settings">
+                <h1 id="dash-display-name">Welcome</h1>
 
-          <h3>Change theme:</h3>
+                <h3>Change theme:</h3>
 
-          <p id="dash-light-theme">Light</p>  
-          <p id="dash-dark-theme">Dark</p>
-          <p id="dash-colored-theme">Colour</p>
+                <p id="dash-light-theme">Light</p>
+                <p id="dash-dark-theme">Dark</p>
+                <p id="dash-colored-theme">Colour</p>
 
-        </div>
-        
-        <!--News-->
+            </div>
+
+            <!--News-->
             <div class="news">
-                <h2>The Top 3 News Stories Coming from the BBC</h2>
+                <h2>News</h2>
+
+                <select name="NewsSource" id="news-select">
+                  <option value="source=bbc-sport&sortBy=top" id="bbc-sport">BBC Sport</option>
+                  <option value="source=bbc-news&sortBy=top">BBC News</option>
+                  <option value="source=daily-mail&sortBy=top">Daily Mail</option>
+                </select>
+
                 <div id="story1">
                     <p id="title1"></p>
                     <p id="desc1"></p>
                     <p id="url1"></p>
                 </div>
-                 <div id="story2">
+
+                <div id="story2">
                     <p id="title2"></p>
                     <p id="desc2"></p>
                     <p id="url2"></p>
                 </div>
-                 <div id="story3">
+
+                <div id="story3">
                     <p id="title3"></p>
                     <p id="desc3"></p>
                     <p id="url3"></p>
                 </div>
             </div>
-            
+
         </div>
 
         <div class="second-column">
 
-        <!--Date-->
+            <!--Date-->
             <div id="date"></div>
 
-        <!--Clock-->
+            <!--Clock-->
             <div id="dashboard-clock-widget"></div>
 
-        <!--Today's Weather-->
+            <!--Today's Weather-->
             <ul id='weathercurrent'>
                 <h3>Today's Weather</h3>
                 <li id='location'></li>
@@ -118,9 +125,9 @@
                 <li id="temp"></li>
                 <li id="wind"></li>
             </ul>
-        
-        <!--Tomorrow's Weather-->
-             <ul id='weathertomorrow'>
+
+            <!--Tomorrow's Weather-->
+            <ul id='weathertomorrow'>
                 <h3>Tomorrow's Weather</h3>
                 <li id="weathertmrrw"></li>
                 <li id="temptmrrw"></li>
@@ -131,14 +138,14 @@
 
         <div class="third-column">
 
-        <!--Twitter Feed-->
+            <!--Twitter Feed-->
             <div class="twitter-feed">
-                <a class="twitter-timeline" href="https://twitter.com/TwitterDev/timelines/539487832448843776" data-height="450">National Park Tweets</a>
+                <a class="twitter-timeline" href="https://twitter.com/nodejs" data-height="450">Tweets by nodejs</a>
             </div>
 
-        <!--To Do List-->
+            <!--To Do List-->
             <div id="to-do-widget">
-              <h4>To Do</h4>
+                <h4>To Do</h4>
                 <div id="input-wrap">
                     <input id="task">
                     <button id="add">Add</button>
@@ -147,9 +154,11 @@
             </div>
 
         </div>
-      </div>
+    </div>
 
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script type="text/javascript" src="scripts/main.js"></script>
-  </body>
+
+</body>
+
 </html>
